@@ -12,18 +12,19 @@ const Contacts = () => {
         <Table bordered hover className='shadow rounded-lg'>
           <thead className='bg-danger text-white font-weight-bold'>
             <tr>
-              <th>
+              <th className='text-center'>
                 {' '}
                 <Form.Check type='checkbox' />
               </th>
               <th>Full Name</th>
               <th>Phone Number</th>
               <th>Email Address</th>
+              <th></th>
             </tr>
           </thead>{' '}
           <tbody>
             {contacts.map((contact) => (
-              <Contact contact={contact} />
+              <Contact key={contact.id} contact={contact} />
             ))}
           </tbody>
         </Table>

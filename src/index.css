@@ -10,3 +10,8 @@ body {
   color: inherit;
   font-weight: inherit;
 }
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
