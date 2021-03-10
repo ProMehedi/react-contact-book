@@ -5,6 +5,7 @@ import Header from './components/Header'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import Contacts from './components/Contacts'
+import NewContact from './components/NewContact'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path='/' component={Contacts} />
+          <Route exact path='/new' component={NewContact} />
         </Switch>
       </Router>
     </Provider>
