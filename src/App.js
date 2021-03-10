@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
 import Header from './components/Header'
 import { Provider } from 'react-redux'
-import store from './store/store'
+import store from './store'
 import Contacts from './components/Contacts'
 import NewContact from './components/NewContact'
 

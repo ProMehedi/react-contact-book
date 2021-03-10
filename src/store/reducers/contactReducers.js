@@ -1,6 +1,5 @@
 import { CREATE_CONTACT } from '../constants/contactConstants'
 
-// Show All Contacts
 const initialState = {
   contacts: [
     {
@@ -250,8 +249,3 @@ export const contactReducers = (state = initialState, action) => {
       return state
   }
 }
-
-// Create New Contact
-// export const newContactReducer = (state, action) {
-
-// }

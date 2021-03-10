@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { addContact } from '../store/actions/contactActions'
+import { useHistory } from 'react-router-dom'
 
 const NewContact = () => {
   const [name, setName] = useState('')
@@ -10,11 +12,16 @@ const NewContact = () => {
   const [email, setEmail] = useState('')
 
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const submitHandler = (e) => {
     e.preventDefault()
 
-    dispatch(addContact({ name, phone, email }))
+    // Save data to redux store
+    dispatch(addContact({ id: uuidv4(), name, phone, email }))
+
+    // Redirect to homepage
+    history.push('/')
   }
 
   return (

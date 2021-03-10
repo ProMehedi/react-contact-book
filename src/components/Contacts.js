@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import Contact from './Contact'
 
 const Contacts = () => {
-  const contacts = useSelector((state) => state.contacts)
+  const contactInfo = useSelector((state) => state.contactInfo)
+  const { contacts } = contactInfo
 
   return (
     <div className='contactWrap py-4'>
@@ -13,7 +14,6 @@ const Contacts = () => {
           <thead className='bg-danger text-white font-weight-bold'>
             <tr>
               <th className='text-center'>
-                {' '}
                 <Form.Check type='checkbox' />
               </th>
               <th>Full Name</th>
@@ -21,7 +21,7 @@ const Contacts = () => {
               <th>Email Address</th>
               <th></th>
             </tr>
-          </thead>{' '}
+          </thead>
           <tbody>
             {contacts.map((contact) => (
               <Contact key={contact.id} contact={contact} />
