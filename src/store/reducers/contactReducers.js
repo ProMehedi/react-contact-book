@@ -1,5 +1,8 @@
-export const contactReducers = (
-  state = [
+import { CREATE_CONTACT } from '../constants/contactConstants'
+
+// Show All Contacts
+const initialState = {
+  contacts: [
     {
       id: 1,
       name: 'Leanne Graham',
@@ -231,10 +234,24 @@ export const contactReducers = (
       },
     },
   ],
-  action
-) => {
+  totalCount: 0,
+  name: 'Mehedi',
+}
+
+export const contactReducers = (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_CONTACT:
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts],
+      }
+
     default:
       return state
   }
 }
+
+// Create New Contact
+// export const newContactReducer = (state, action) {
+
+// }

@@ -1,11 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { addContact } from '../store/actions/contactActions'
 
 const NewContact = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+
+  const dispatch = useDispatch()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+
+    dispatch(addContact({ name, phone, email }))
+  }
 
   return (
     <Container>
@@ -16,13 +26,14 @@ const NewContact = () => {
               <Card.Title className='border-bottom pb-2 mb-3 text-uppercase font-weight-bold text-danger'>
                 Contact Information
               </Card.Title>
-              <Form className='mb-0'>
+              <Form className='mb-0' onSubmit={submitHandler}>
                 <Form.Group controlId='name'>
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
                     type='text'
                     placeholder='Enter full name'
                     value={name}
+                    required
                     onChange={(e) => setName(e.target.value)}
                   />
                 </Form.Group>
@@ -33,6 +44,7 @@ const NewContact = () => {
                     type='text'
                     placeholder='Enter phone number'
                     value={phone}
+                    required
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </Form.Group>
