@@ -2,6 +2,7 @@ import {
   CREATE_CONTACT,
   GET_CONTACT,
   UPDATE_CONTACT,
+  DELETE_CONTACT,
 } from '../constants/contactConstants'
 
 // Add New Contact
@@ -20,4 +21,10 @@ export const getContact = (id) => ({
 export const updateContact = (contact) => ({
   type: UPDATE_CONTACT,
   payload: contact,
+})
+
+// Update A Contact
+export const deleteContact = (id) => ({
+  type: DELETE_CONTACT,
+  payload: id,
 })

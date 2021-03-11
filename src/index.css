@@ -15,3 +15,7 @@ body {
 .table th {
   vertical-align: middle;
 }
+
+.pointer {
+  cursor: pointer !important;
+}

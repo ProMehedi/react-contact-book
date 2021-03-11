@@ -2,10 +2,17 @@ import React from 'react'
 import Avatar from 'react-avatar'
 import { Form } from 'react-bootstrap'
 import { BsPencil, BsTrash } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { deleteContact } from '../store/actions/contactActions'
 
 const Contact = ({ contact }) => {
+  const dispatch = useDispatch()
   const { id, name, phone, email } = contact
+
+  const deleteHandler = (id) => {
+    dispatch(deleteContact(id))
+  }
   return (
     <tr>
       <td className='text-center'>
@@ -20,9 +27,12 @@ const Contact = ({ contact }) => {
         <Link to={`/edit/${id}`} className='text-dark p-1'>
           <BsPencil />
         </Link>
-        <Link to='/delete' className='text-danger p-1'>
+        <span
+          className='pointer text-danger p-1'
+          onClick={() => deleteHandler(id)}
+        >
           <BsTrash />
-        </Link>
+        </span>
       </td>
     </tr>
   )

@@ -1,5 +1,6 @@
 import {
   CREATE_CONTACT,
+  DELETE_CONTACT,
   GET_CONTACT,
   UPDATE_CONTACT,
 } from '../constants/contactConstants'
@@ -264,6 +265,12 @@ export const contactReducers = (state = initialState, action) => {
         contact.id === action.payload.id ? action.payload : contact
       )
       return { ...state, contacts: updatedContact }
+
+    case DELETE_CONTACT:
+      const deletedContact = state.contacts.filter(
+        (contact) => contact.id !== action.payload
+      )
+      return { ...state, contacts: deletedContact }
 
     default:
       return state
