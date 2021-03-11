@@ -5,7 +5,7 @@ import { BsPencil, BsTrash } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 const Contact = ({ contact }) => {
-  const { name, phone, email } = contact
+  const { id, name, phone, email } = contact
   return (
     <tr>
       <td className='text-center'>
@@ -17,7 +17,7 @@ const Contact = ({ contact }) => {
       <td>{phone}</td>
       <td>{email}</td>
       <td className='text-center'>
-        <Link to='/edit' className='text-dark p-1'>
+        <Link to={`/edit/${id}`} className='text-dark p-1'>
           <BsPencil />
         </Link>
         <Link to='/delete' className='text-danger p-1'>

@@ -1,4 +1,8 @@
-import { CREATE_CONTACT } from '../constants/contactConstants'
+import {
+  CREATE_CONTACT,
+  GET_CONTACT,
+  UPDATE_CONTACT,
+} from '../constants/contactConstants'
 
 const initialState = {
   contacts: [
@@ -244,6 +248,22 @@ export const contactReducers = (state = initialState, action) => {
         ...state,
         contacts: [action.payload, ...state.contacts],
       }
+
+    case GET_CONTACT:
+      let contacts = state.contacts.filter(
+        (contact) => contact.id === action.contactId
+      )
+      contacts = contacts.values()
+      for (let contact of contacts) {
+        contacts = contact
+      }
+      return { ...state, contact: contacts }
+
+    case UPDATE_CONTACT:
+      const updatedContact = state.contacts.map((contact) =>
+        contact.id === action.payload.id ? action.payload : contact
+      )
+      return { ...state, contacts: updatedContact }
 
     default:
       return state
