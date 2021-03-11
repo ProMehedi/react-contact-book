@@ -19,3 +19,7 @@ body {
 .pointer {
   cursor: pointer !important;
 }
+
+.btn:disabled {
+  cursor: not-allowed !important;
+}

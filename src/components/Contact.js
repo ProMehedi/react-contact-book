@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteContact } from '../store/actions/contactActions'
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, selectAll }) => {
   const dispatch = useDispatch()
   const { id, name, phone, email } = contact
 
@@ -16,7 +16,7 @@ const Contact = ({ contact }) => {
   return (
     <tr>
       <td className='text-center'>
-        <Form.Check type='checkbox' />
+        <Form.Check type='checkbox' checked={selectAll} />
       </td>
       <td>
         <Avatar name={name} size='40' round className='mr-1' /> {name}
