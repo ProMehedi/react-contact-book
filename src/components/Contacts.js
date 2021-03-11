@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+  deleteAllContacts,
   deSelectContacts,
   selectContacts,
 } from '../store/actions/contactActions'
@@ -23,6 +24,11 @@ const Contacts = () => {
     }
   }, [selectAll, contacts, dispatch])
 
+  const deleteAllHandler = () => {
+    dispatch(deleteAllContacts())
+    setSelectAll(false)
+  }
+
   return (
     <div className='contactWrap py-4'>
       <Container>
@@ -34,6 +40,7 @@ const Contacts = () => {
                   type='checkbox'
                   value={selectAll}
                   onChange={() => setSelectAll(!selectAll)}
+                  checked={selectAll}
                 />
               </th>
               <th>Full Name</th>
@@ -41,7 +48,10 @@ const Contacts = () => {
               <th>Email Address</th>
               <th className='text-center'>
                 {selectAll ? (
-                  <Button variant='outline-light btn-sm m-0 px-1 py-0'>
+                  <Button
+                    variant='outline-light btn-sm m-0 px-1 py-0'
+                    onClick={deleteAllHandler}
+                  >
                     DELETE ALL
                   </Button>
                 ) : (

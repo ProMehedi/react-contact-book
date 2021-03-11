@@ -5,6 +5,7 @@ import {
   DELETE_CONTACT,
   SELECT_CONTACT,
   CLEAR_CONTACT,
+  DELETE_ALL_CONTACT,
 } from '../constants/contactConstants'
 
 // Add New Contact
@@ -40,4 +41,9 @@ export const selectContacts = (id) => ({
 // DeSelect Contacts
 export const deSelectContacts = () => ({
   type: CLEAR_CONTACT,
+})
+
+// DeSelect Contacts
+export const deleteAllContacts = () => ({
+  type: DELETE_ALL_CONTACT,
 })
