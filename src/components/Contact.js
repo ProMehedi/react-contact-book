@@ -21,7 +21,7 @@ const Contact = ({ contact, selectAll }) => {
       <td className='text-center'>
         <Form.Check
           type='checkbox'
-          value={selectAll}
+          value={select}
           onChange={(e) => setSelect(e.target.value)}
           checked={selectAll}
         />

@@ -79,7 +79,7 @@ const EditContact = ({ history }) => {
                   />
                 </Form.Group>
                 <Button variant='outline-primary' type='submit'>
-                  UPDATE INFO
+                  UPDATE CONTACT
                 </Button>
               </Form>
             </Card.Body>

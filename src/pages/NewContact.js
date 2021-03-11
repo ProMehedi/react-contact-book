@@ -66,7 +66,7 @@ const NewContact = () => {
                   />
                 </Form.Group>
                 <Button variant='outline-primary' type='submit'>
-                  Submit
+                  Submit Contact
                 </Button>
               </Form>
             </Card.Body>
