@@ -1,13 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Table } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  deSelectContacts,
+  selectContacts,
+} from '../store/actions/contactActions'
 import Contact from './Contact'
 
 const Contacts = () => {
+  const dispatch = useDispatch()
+
   const [selectAll, setSelectAll] = useState(false)
 
   const contactInfo = useSelector((state) => state.contactInfo)
   const { contacts } = contactInfo
+
+  useEffect(() => {
+    if (selectAll) {
+      dispatch(selectContacts(contacts.map((contact) => contact.id)))
+    } else {
+      dispatch(deSelectContacts())
+    }
+  }, [selectAll, contacts, dispatch])
 
   return (
     <div className='contactWrap py-4'>

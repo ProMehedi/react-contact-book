@@ -1,14 +1,16 @@
 import {
+  CLEAR_CONTACT,
   CREATE_CONTACT,
   DELETE_CONTACT,
   GET_CONTACT,
+  SELECT_CONTACT,
   UPDATE_CONTACT,
 } from '../constants/contactConstants'
 
 const initialState = {
   contacts: [
     {
-      id: 1,
+      id: '1',
       name: 'Leanne Graham',
       username: 'Bret',
       email: 'Sincere@april.biz',
@@ -22,7 +24,7 @@ const initialState = {
           lng: '81.1496',
         },
       },
-      phone: '1-770-736-8031 x56442',
+      phone: '1-770-736-8031',
       website: 'hildegard.org',
       company: {
         name: 'Romaguera-Crona',
@@ -31,7 +33,7 @@ const initialState = {
       },
     },
     {
-      id: 2,
+      id: '2',
       name: 'Ervin Howell',
       username: 'Antonette',
       email: 'Shanna@melissa.tv',
@@ -54,7 +56,7 @@ const initialState = {
       },
     },
     {
-      id: 3,
+      id: '3',
       name: 'Clementine Bauch',
       username: 'Samantha',
       email: 'Nathan@yesenia.net',
@@ -77,7 +79,7 @@ const initialState = {
       },
     },
     {
-      id: 4,
+      id: '4',
       name: 'Patricia Lebsack',
       username: 'Karianne',
       email: 'Julianne.OConner@kory.org',
@@ -100,7 +102,7 @@ const initialState = {
       },
     },
     {
-      id: 5,
+      id: '5',
       name: 'Chelsey Dietrich',
       username: 'Kamren',
       email: 'Lucio_Hettinger@annie.ca',
@@ -123,7 +125,7 @@ const initialState = {
       },
     },
     {
-      id: 6,
+      id: '6',
       name: 'Mrs. Dennis Schulist',
       username: 'Leopoldo_Corkery',
       email: 'Karley_Dach@jasper.info',
@@ -146,7 +148,7 @@ const initialState = {
       },
     },
     {
-      id: 7,
+      id: '7',
       name: 'Kurtis Weissnat',
       username: 'Elwyn.Skiles',
       email: 'Telly.Hoeger@billy.biz',
@@ -169,7 +171,7 @@ const initialState = {
       },
     },
     {
-      id: 8,
+      id: '8',
       name: 'Nicholas Runolfsdottir V',
       username: 'Maxime_Nienow',
       email: 'Sherwood@rosamond.me',
@@ -192,7 +194,7 @@ const initialState = {
       },
     },
     {
-      id: 9,
+      id: '9',
       name: 'Glenna Reichert',
       username: 'Delphine',
       email: 'Chaim_McDermott@dana.io',
@@ -215,7 +217,7 @@ const initialState = {
       },
     },
     {
-      id: 10,
+      id: '10',
       name: 'Clementina DuBuque',
       username: 'Moriah.Stanton',
       email: 'Rey.Padberg@karina.biz',
@@ -252,7 +254,7 @@ export const contactReducers = (state = initialState, action) => {
 
     case GET_CONTACT:
       let contacts = state.contacts.filter(
-        (contact) => contact.id === action.contactId
+        (contact) => contact.id.toString() === action.contactId.toString()
       )
       contacts = contacts.values()
       for (let contact of contacts) {
@@ -262,7 +264,9 @@ export const contactReducers = (state = initialState, action) => {
 
     case UPDATE_CONTACT:
       const updatedContact = state.contacts.map((contact) =>
-        contact.id === action.payload.id ? action.payload : contact
+        contact.id.toString() === action.payload.id.toString()
+          ? action.payload
+          : contact
       )
       return { ...state, contacts: updatedContact }
 
@@ -271,6 +275,13 @@ export const contactReducers = (state = initialState, action) => {
         (contact) => contact.id !== action.payload
       )
       return { ...state, contacts: deletedContact }
+
+    case SELECT_CONTACT:
+      const selectedContacts = action.payload
+      return { ...state, selectedContacts }
+
+    case CLEAR_CONTACT:
+      return { ...state, selectedContacts: [] }
 
     default:
       return state

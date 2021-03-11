@@ -17,13 +17,13 @@ const EditContact = ({ history }) => {
   const [email, setEmail] = useState('')
 
   useEffect(() => {
-    if (contact != null) {
+    if (contact) {
       setName(contact.name)
       setPhone(contact.phone)
       setEmail(contact.email)
     }
     dispatch(getContact(id))
-  }, [id, dispatch, contact])
+  }, [id, contact, dispatch])
 
   const submitHandler = (e) => {
     e.preventDefault()

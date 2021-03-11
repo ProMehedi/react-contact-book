@@ -48,7 +48,7 @@ const NewContact = () => {
                 <Form.Group controlId='phone'>
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control
-                    type='text'
+                    type='number'
                     placeholder='Enter phone number'
                     value={phone}
                     required
